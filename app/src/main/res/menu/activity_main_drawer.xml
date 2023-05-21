@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_ubicacion"
+            android:icon="@drawable/baseline_place_24"
+            android:iconTint="@color/marcado"
+            android:title="@string/menu_ubicacion" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/baseline_person_24"
+            android:iconTint="@color/marcado"
+            android:title="@string/menu_perfil" />
+        <item
+            android:id="@+id/nav_inmuebles"
+            android:icon="@drawable/baseline_cottage_24"
+            android:iconTint="@color/marcado"
+            android:title="@string/menu_inmuebles" />
+        <item
+            android:id="@+id/nav_inquilinos"
+            android:icon="@drawable/baseline_family_restroom_24"
+            android:iconTint="@color/marcado"
+            android:title="@string/menu_inquilinos" />
+        <item
+            android:id="@+id/nav_contratos"
+            android:icon="@drawable/baseline_article_24"
+            android:iconTint="@color/marcado"
+            android:title="@string/menu_contratos" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/baseline_west_24"
+            android:iconTint="@color/marcado"
+            android:title="@string/menu_salir" />
+    </group>
+</menu>
