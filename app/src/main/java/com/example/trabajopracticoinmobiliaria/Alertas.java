@@ -15,7 +15,7 @@ public class Alertas {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Activity act = (Activity) context;
-                        act.finishAffinity();
+                        act.finish();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
