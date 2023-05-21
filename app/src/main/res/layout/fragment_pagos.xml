@@ -8,7 +8,7 @@
     tools:context=".ui.inmuebles.InmueblesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listaContratos"
+        android:id="@+id/listaPagos"
         android:layout_width="371dp"
         android:layout_height="661dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,14 +1,18 @@
 package com.example.trabajopracticoinmobiliaria;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -63,6 +67,43 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.nav_contratos:
+                                navController.navigate(R.id.nav_contratos);
+                                drawer.closeDrawers();
+                                return true;
+                            case R.id.nav_inmuebles:
+                                navController.navigate(R.id.nav_inmuebles);
+                                drawer.closeDrawers();
+                                return true;
+                            case R.id.nav_inquilinos:
+                                navController.navigate(R.id.nav_inquilinos);
+                                drawer.closeDrawers();
+                                return true;
+                            case R.id.nav_perfil:
+                                navController.navigate(R.id.nav_perfil);
+                                drawer.closeDrawers();
+                                return true;
+                            case R.id.nav_ubicacion:
+                                navController.navigate(R.id.nav_ubicacion);
+                                drawer.closeDrawers();
+                                return true;
+                            case R.id.nav_logout:
+                                Alertas.Salir(MenuActivity.this);
+                                return false;
+                            default:
+                                return false;
+                        }
+                    }
+                }
+        );
     }
 
     @Override

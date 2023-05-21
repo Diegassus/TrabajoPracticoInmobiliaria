@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:backgroundTint="@color/marcado"
+    android:padding="20dp"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cartaInmueble"
+        android:layout_width="340dp"
+        android:layout_height="213dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/marcado"
+        app:layout_constraintVertical_bias="0.214">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/viewpager_bkg">
+
+            <TextView
+                android:id="@+id/tvCodigo"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Codigo de Pago:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/etCodigo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="24dp"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/tvCodigo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNumeroPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginStart="32dp"
+                android:text="Numero de Pago:"
+                app:layout_constraintBottom_toTopOf="@+id/tvCodigoContrato"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCodigo"
+                app:layout_constraintVertical_bias="0.514" />
+
+            <TextView
+                android:id="@+id/etNumeroPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"
+                android:text="tertview"
+                app:layout_constraintStart_toEndOf="@+id/tvNumeroPago"
+                app:layout_constraintTop_toBottomOf="@+id/etCodigo" />
+
+            <TextView
+                android:id="@+id/tvCodigoContrato"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Codigo de Contrato:"
+                app:layout_constraintBottom_toTopOf="@+id/tvFechaDePago"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCodigo" />
+
+            <TextView
+                android:id="@+id/etCodigoContrato"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/tvCodigoContrato"
+                app:layout_constraintTop_toBottomOf="@+id/etNumeroPago" />
+
+            <TextView
+                android:id="@+id/tvImporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textColor="@color/black"
+                android:text="Importe:"
+                app:layout_constraintBottom_toTopOf="@+id/tvFechaDePago"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCodigoContrato"
+                app:layout_constraintVertical_bias="0.514" />
+
+            <TextView
+                android:id="@+id/etImporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/tvImporte"
+                app:layout_constraintTop_toBottomOf="@+id/etCodigoContrato" />
+
+            <TextView
+                android:id="@+id/tvFechaDePago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="24dp"
+                android:text="Fecha de Pago:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/etFechaPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/tvFechaDePago"
+                app:layout_constraintTop_toBottomOf="@+id/etImporte" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
