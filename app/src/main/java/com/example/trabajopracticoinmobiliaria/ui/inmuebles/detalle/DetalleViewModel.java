@@ -33,5 +33,6 @@ public class DetalleViewModel extends AndroidViewModel {
 
     public void setEstado(boolean estado){
         inmueble.getValue().setEstado(estado);
+        ApiClient.getApi().actualizarInmueble(inmueble.getValue());
     }
 }

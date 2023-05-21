@@ -29,10 +29,32 @@
     <fragment
         android:id="@+id/detalleFragment"
         android:name="com.example.trabajopracticoinmobiliaria.ui.inmuebles.detalle.DetalleFragment"
-        android:label="fragment_detalle"
+        android:label="Detalle Inmueble"
         tools:layout="@layout/fragment_detalle" >
         <action
             android:id="@+id/action_detalleFragment_to_nav_inmuebles"
             app:destination="@id/nav_inmuebles" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_inquilinos"
+        android:name="com.example.trabajopracticoinmobiliaria.ui.inquilinos.InquilinosFragment"
+        android:label="Inmuebles Alquilados" >
+        <action
+            android:id="@+id/action_nav_inquilinos_to_locatarioFragment"
+            app:destination="@id/locatarioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locatarioFragment"
+        android:name="com.example.trabajopracticoinmobiliaria.ui.inquilinos.inquilino.locatarioFragment"
+        android:label="Inquilino"
+        tools:layout="@layout/fragment_locatario" >
+        <action
+            android:id="@+id/action_locatarioFragment_to_nav_inquilinos"
+            app:destination="@id/nav_inquilinos" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_contratos"
+        android:name="com.example.trabajopracticoinmobiliaria.ui.contratos.ContratosFragment"
+        android:label="Contratos"
+        tools:layout="@layout/fragment_contratos" />
 </navigation>

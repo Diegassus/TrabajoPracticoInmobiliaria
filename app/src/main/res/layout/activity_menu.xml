@@ -22,6 +22,7 @@
         android:fitsSystemWindows="true"
         android:backgroundTint="@color/principal"
         app:headerLayout="@layout/nav_header_menu"
+        app:itemIconTint="@color/marcado"
         app:itemTextColor="@color/marcado"
         app:menu="@menu/activity_main_drawer" />
 </androidx.drawerlayout.widget.DrawerLayout>
