@@ -30,9 +30,9 @@ public class ContratoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         vm = new ViewModelProvider(this).get(ContratoViewModel.class);
+        vm.recuperarContrato(getArguments());
         binding = FragmentContratoBinding.inflate(inflater, container, false);
 
-        vm.recuperarContrato(getArguments());
         vm.getContrato().observe(getViewLifecycleOwner(), contrato -> {
             binding.etCodigo.setText(contrato.getIdContrato()+"");
             binding.etFin.setText(contrato.getFechaFin()+"");
