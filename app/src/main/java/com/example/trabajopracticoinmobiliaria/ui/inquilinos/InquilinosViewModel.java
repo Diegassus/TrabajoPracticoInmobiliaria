@@ -22,8 +22,8 @@ public class InquilinosViewModel extends AndroidViewModel {
         super(application);
         context = application.getApplicationContext();
         inmuebles = new MutableLiveData<>();
-        lista = ApiClient.getApi().obtenerPropiedadesAlquiladas();
-        inmuebles.setValue(lista);
+//        lista = ApiClient.getApi().obtenerPropiedadesAlquiladas();
+//        inmuebles.setValue(lista);
     }
 
     public LiveData<ArrayList<Inmueble>> getInmuebles(){

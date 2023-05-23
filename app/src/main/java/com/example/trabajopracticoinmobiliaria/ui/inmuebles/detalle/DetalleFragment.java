@@ -35,15 +35,15 @@ public class DetalleFragment extends Fragment {
         vm.recuperarInmueble(getArguments());
 
         vm.getInmueble().observe(getViewLifecycleOwner(), inmueble -> {
-            binding.cbDisponible.setChecked(inmueble.isEstado());
-           binding.etAmbientes.setText(String.valueOf(inmueble.getAmbientes()));
-           binding.etCalle.setText(inmueble.getDireccion());
-           binding.etCodigo.setText(inmueble.getIdInmueble()+"");
-           binding.etPrecio.setText("$"+inmueble.getPrecio());
-           binding.etTipo.setText(inmueble.getTipo());
-           binding.etUso.setText(inmueble.getUso());
+            binding.cbDisponible.setChecked(inmueble.isDisponible());
+            binding.etAmbientes.setText(String.valueOf(inmueble.getAmbientes()));
+            binding.etCalle.setText(inmueble.getDireccion());
+            binding.etCodigo.setText(inmueble.getId()+"");
+            binding.etPrecio.setText("$"+inmueble.getPrecio());
+            binding.etTipo.setText(inmueble.getTipo()+"");
+            binding.etUso.setText(inmueble.getUso()+"");
             Glide.with(getContext())
-                    .load(inmueble.getImagen())
+                    .load(inmueble.getFoto())
                     .into(binding.ivImagenCasa);
         });
 

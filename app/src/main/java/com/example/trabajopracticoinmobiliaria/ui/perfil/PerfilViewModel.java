@@ -2,6 +2,7 @@ package com.example.trabajopracticoinmobiliaria.ui.perfil;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -11,6 +12,10 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.trabajopracticoinmobiliaria.Models.Propietario;
 import com.example.trabajopracticoinmobiliaria.request.ApiClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PerfilViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> enabled;
@@ -36,8 +41,23 @@ public class PerfilViewModel extends AndroidViewModel {
     }
 
     public void cargarDatos(){
-        Propietario p = ApiClient.getApi().obtenerUsuarioActual();
-        propietario.setValue(p);
+        ApiClient.IEndpointInmobiliaria end = ApiClient.getApi();
+        Call<Propietario> call = end.obtenerPerfil(context.getSharedPreferences("token.xml",0).getString("token",""));
+        call.enqueue(new Callback<Propietario>() {
+            @Override
+            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                if(response.isSuccessful()){
+                    if(response.body()!=null){
+                        propietario.setValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Propietario> call, Throwable t) {
+                Toast.makeText(context, "Error cargar propietario", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void turnEnabled() {
@@ -45,9 +65,11 @@ public class PerfilViewModel extends AndroidViewModel {
     }
 
     public void guardarPropietario(Long dni, String nombre, String apellido, String correo, String telefono, String clave){
-        Propietario actual = new Propietario(propietario.getValue().getId(), dni, nombre, apellido, correo, clave, telefono, propietario.getValue().getAvatar());
-        ApiClient.getApi().actualizarPerfil(actual);
-        propietario.setValue(actual);
+//        Propietario actual = new Propietario(propietario.getValue().getId(), dni, nombre, apellido, correo, clave, telefono, propietario.getValue().getAvatar());
+//        ApiClient.getApi().actualizarPerfil(actual);
+//        propietario.setValue(actual);
         turnEnabled();
+
+        // desarrollar logica para actualizar propietario
     }
 }

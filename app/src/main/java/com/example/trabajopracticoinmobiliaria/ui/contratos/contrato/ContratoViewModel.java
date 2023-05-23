@@ -19,7 +19,7 @@ public class ContratoViewModel extends ViewModel {
         return contrato;
     }
     public void recuperarContrato(Bundle bundle){;
-        this.contrato.setValue(ApiClient.getApi().obtenerContratoVigente((Inmueble) bundle.getSerializable("inmueble")));
+        //this.contrato.setValue(ApiClient.getApi().obtenerContratoVigente((Inmueble) bundle.getSerializable("inmueble")));
     }
 
 }

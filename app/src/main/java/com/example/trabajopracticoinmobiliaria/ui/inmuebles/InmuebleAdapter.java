@@ -27,10 +27,10 @@ import java.util.List;
 
 public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHolder> {
     private Context context;
-    private List<Inmueble> inmuebles;
+    private ArrayList<Inmueble> inmuebles;
     private LayoutInflater li;
 
-    public InmuebleAdapter(Context context, List<Inmueble> inmuebles, LayoutInflater li) {
+    public InmuebleAdapter(Context context, ArrayList<Inmueble> inmuebles, LayoutInflater li) {
         this.context = context;
         this.inmuebles = inmuebles;
         this.li = li;
@@ -46,10 +46,10 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull InmuebleAdapter.ViewHolder holder, int position) {
         holder.calle.setText(inmuebles.get(position).getDireccion());
-        Glide.with(context)
-                .load(inmuebles.get(position).getImagen())
-                .into(holder.imagen);
         holder.precio.setText("$"+inmuebles.get(position).getPrecio());
+        Glide.with(context)
+                .load(inmuebles.get(position).getFoto())
+                .into(holder.imagen);
     }
 
     @Override

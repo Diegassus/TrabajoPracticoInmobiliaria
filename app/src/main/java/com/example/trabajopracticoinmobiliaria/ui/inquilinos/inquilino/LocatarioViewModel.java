@@ -19,7 +19,7 @@ public class LocatarioViewModel extends ViewModel {
     }
 
     public void recuperarInquilino(Bundle bundle){
-        Inquilino inquilino = ApiClient.getApi().obtenerInquilino((Inmueble) bundle.getSerializable("inmueble"));
-        this.inquilino.setValue(inquilino);
+        //Inquilino inquilino = ApiClient.getApi().obtenerInquilino((Inmueble) bundle.getSerializable("inmueble"));
+        //this.inquilino.setValue(inquilino);
     }
 }

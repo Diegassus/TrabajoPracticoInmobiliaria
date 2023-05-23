@@ -51,9 +51,7 @@ public class MenuActivity extends AppCompatActivity {
             TextView tvU = binding.navView.getHeaderView(0).findViewById(R.id.username);
             tvU.setText(p.getApellido()+", "+p.getNombre());
             TextView tvC = binding.navView.getHeaderView(0).findViewById(R.id.correo);
-            tvC.setText(p.getEmail());
-            ImageView ivA = binding.navView.getHeaderView(0).findViewById(R.id.imageView);
-            ivA.setImageResource(p.getAvatar());
+            tvC.setText(p.getCorreo());
         });
 
         vm.obtenerDatos();

@@ -28,9 +28,9 @@ public class PerfilFragment extends Fragment {
             binding.etDni.setText(p.getDni() + "");
             binding.etNombre.setText(p.getNombre());
             binding.etApellido.setText(p.getApellido());
-            binding.etCorreo.setText(p.getEmail());
+            binding.etCorreo.setText(p.getCorreo());
             binding.etTelefono.setText(p.getTelefono());
-            binding.etPassword.setText(p.getContraseña());
+            //binding.etPassword.setText(p.getContraseña());
             binding.etCodigo.setText(p.getId()+"");
         });
 

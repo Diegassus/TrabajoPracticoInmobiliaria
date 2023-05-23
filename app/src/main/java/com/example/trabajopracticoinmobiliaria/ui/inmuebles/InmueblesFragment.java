@@ -8,11 +8,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabajopracticoinmobiliaria.Models.Inmueble;
 import com.example.trabajopracticoinmobiliaria.databinding.FragmentInmueblesBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InmueblesFragment extends Fragment {
     private InmueblesViewModel vm;
@@ -21,7 +26,6 @@ public class InmueblesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         vm = new ViewModelProvider(this).get(InmueblesViewModel.class);
-
         binding = FragmentInmueblesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -29,9 +33,11 @@ public class InmueblesFragment extends Fragment {
         GridLayoutManager gm = new GridLayoutManager(getContext(), 1,GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(gm);
 
-        vm.getInmuebles().observe(getViewLifecycleOwner(), inmuebles -> {
-            InmuebleAdapter adapter = new InmuebleAdapter(getContext(),inmuebles,getLayoutInflater());
-            rv.setAdapter(adapter);
+        vm.getInmuebles().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+            @Override
+            public void onChanged(ArrayList<Inmueble> inmuebles) {
+                rv.setAdapter(new InmuebleAdapter(getContext(),inmuebles,getLayoutInflater()));
+            }
         });
         return root;
     }

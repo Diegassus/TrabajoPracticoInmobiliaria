@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.net.Uri;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -19,7 +21,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.trabajopracticoinmobiliaria.Models.Propietario;
+import com.example.trabajopracticoinmobiliaria.Models.Usuario;
 import com.example.trabajopracticoinmobiliaria.request.ApiClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivityViewModel extends AndroidViewModel {
     private Context context;
@@ -57,16 +64,30 @@ public class MainActivityViewModel extends AndroidViewModel {
             if(password.isEmpty()){
                 error.setValue("Debe ingresar una contraseña");
             }else{
-                Propietario p = ApiClient.getApi().login(mail, password);
-                if(p == null){
-                    error.setValue("Correo o contraseña incorrectos");
-                }else{
-                    error.setValue("");
-                    Intent intent = new Intent(context,MenuActivity.class);
-                    intent.putExtra("propietario",p);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
+                Usuario miUsuario = new Usuario(mail, password);
+                ApiClient.IEndpointInmobiliaria end = ApiClient.getApi();
+                Call<String> call = end.login(miUsuario);
+                call.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if(response.isSuccessful()){
+                            if(response.body()!=null){
+                                SharedPreferences sp = context.getSharedPreferences("token.xml",0);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("token","Bearer "+response.body());
+                                editor.commit();
+                                Intent intent = new Intent(context, MenuActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(context, "Error a llamar al login", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         }
     }

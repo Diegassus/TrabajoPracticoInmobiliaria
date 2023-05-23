@@ -22,7 +22,7 @@ public class ContratosViewModel extends AndroidViewModel {
         super(application);
         context = application.getApplicationContext();
         inmuebles = new MutableLiveData<>();
-        lista = ApiClient.getApi().obtenerPropiedadesAlquiladas();
+        //lista = ApiClient.getApi().obtenerPropiedadesAlquiladas();
         inmuebles.setValue(lista);
     }
 

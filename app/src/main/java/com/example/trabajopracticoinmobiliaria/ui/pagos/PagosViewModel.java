@@ -33,7 +33,7 @@ public class PagosViewModel extends AndroidViewModel {
 
     public void obtenerPagos(Bundle bundle) {
         Contrato contrato = (Contrato) bundle.getSerializable("contrato");
-        listaPagos = ApiClient.getApi().obtenerPagos(contrato);
-        pagos.setValue(listaPagos);
+//        listaPagos = ApiClient.getApi().obtenerPagos(contrato);
+//        pagos.setValue(listaPagos);
     }
 }
