@@ -33,7 +33,7 @@ public class DetalleViewModel extends AndroidViewModel {
     }
     public void recuperarInmueble(Bundle bundle){
 
-        Inmueble inmueble = (Inmueble) bundle.getSerializable("inmueble");
+        int inmuebleId = bundle.getInt("inmueble");
 //        this.inmueble.setValue(inmueble);
         SharedPreferences sp = context.getSharedPreferences("token.xml",0);
         String token = sp.getString("token","");
@@ -41,7 +41,7 @@ public class DetalleViewModel extends AndroidViewModel {
         if(token.isEmpty())return;
 
         ApiClient.IEndpointInmobiliaria end = ApiClient.getApi();
-        Call<Inmueble> call = end.obtenerInmueble(token,inmueble.getId());
+        Call<Inmueble> call = end.obtenerInmueble(token,inmuebleId);
         call.enqueue(new Callback<Inmueble>() {
             @Override
             public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
@@ -61,6 +61,24 @@ public class DetalleViewModel extends AndroidViewModel {
 
     public void setEstado(boolean estado){
         inmuebleM.getValue().setDisponible(estado);
-        //ApiClient.getApi().actualizarInmueble(inmueble.getValue());
+        SharedPreferences sp = context.getSharedPreferences("token.xml",0);
+        String token = sp.getString("token","");
+        ApiClient.IEndpointInmobiliaria end = ApiClient.getApi();
+        Call<Inmueble> call = end.cambiarEstado(token,inmuebleM.getValue().getId());
+        call.enqueue(new Callback<Inmueble>() {
+            @Override
+            public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
+                if(response.isSuccessful()){
+                    if(response.body()!=null){
+                        inmuebleM.setValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Inmueble> call, Throwable t) {
+                Toast.makeText(context, "No se pudo actualizar el estado", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

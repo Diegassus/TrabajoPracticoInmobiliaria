@@ -73,7 +73,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("inmueble",inmuebles.get(getAdapterPosition()));
+                    bundle.putInt("inmueble",inmuebles.get(getAdapterPosition()).getId());
                     Navigation.findNavController(v).navigate(R.id.detalleFragment,bundle);
                  }
             });

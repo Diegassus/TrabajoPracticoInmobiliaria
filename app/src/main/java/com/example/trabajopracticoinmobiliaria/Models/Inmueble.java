@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Inmueble implements Serializable{
+public class Inmueble{
     private String direccion;
     private int superficie, propietarioId, id, grupoId, uso, tipo, ambientes;
     private boolean disponible;
