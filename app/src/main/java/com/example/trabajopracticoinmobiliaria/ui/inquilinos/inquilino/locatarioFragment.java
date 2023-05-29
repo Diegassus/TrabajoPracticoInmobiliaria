@@ -31,14 +31,12 @@ public class locatarioFragment extends Fragment {
         binding = FragmentLocatarioBinding.inflate(inflater, container, false);
         vm.recuperarInquilino(getArguments());
         vm.getInquilino().observe(getViewLifecycleOwner(), inquilino -> {
-           binding.etCodigo.setText(inquilino.getIdInquilino()+"");
+           binding.etCodigo.setText(inquilino.getId()+"");
            binding.etApellido.setText(inquilino.getApellido());
            binding.etNombre.setText(inquilino.getNombre());
-           binding.etCorreo.setText(inquilino.getEmail());
-           binding.etDni.setText(inquilino.getDNI()+"");
+           binding.etCorreo.setText(inquilino.getCorreo());
+           binding.etDni.setText(inquilino.getDni()+"");
            binding.etTelefono.setText(inquilino.getTelefono()+"");
-           binding.etGarante.setText(inquilino.getNombreGarante());
-           binding.etTelefonoGarante.setText(inquilino.getTelefonoGarante()+"");
         });
 
         return binding.getRoot();

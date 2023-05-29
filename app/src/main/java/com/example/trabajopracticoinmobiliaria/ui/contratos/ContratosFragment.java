@@ -1,5 +1,6 @@
 package com.example.trabajopracticoinmobiliaria.ui.contratos;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -14,8 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.trabajopracticoinmobiliaria.Models.Inmueble;
 import com.example.trabajopracticoinmobiliaria.R;
 import com.example.trabajopracticoinmobiliaria.databinding.FragmentContratosBinding;
+
+import java.util.ArrayList;
 
 public class ContratosFragment extends Fragment {
 
@@ -36,8 +40,11 @@ public class ContratosFragment extends Fragment {
         GridLayoutManager gm = new GridLayoutManager(getContext(),1,GridLayoutManager.VERTICAL,false);
         rv.setLayoutManager(gm);
 
-        vm.getInmuebles().observe(getViewLifecycleOwner(), inmuebles -> {
-            rv.setAdapter(new ContratosAdapter(getContext(),inmuebles,inflater));
+        vm.getInmuebles().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+            @Override
+            public void onChanged(ArrayList<Inmueble> inmuebles) {
+                rv.setAdapter(new ContratosAdapter(getContext(),inmuebles,getLayoutInflater()));
+            }
         });
 
         return binding.getRoot();

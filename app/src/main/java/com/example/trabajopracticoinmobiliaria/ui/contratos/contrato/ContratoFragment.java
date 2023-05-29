@@ -34,12 +34,12 @@ public class ContratoFragment extends Fragment {
         binding = FragmentContratoBinding.inflate(inflater, container, false);
 
         vm.getContrato().observe(getViewLifecycleOwner(), contrato -> {
-            binding.etCodigo.setText(contrato.getIdContrato()+"");
-            binding.etFin.setText(contrato.getFechaFin()+"");
-            binding.etInicio.setText(contrato.getFechaInicio()+"");
-            binding.etInquilino.setText(contrato.getInquilino().getNombre()+" "+contrato.getInquilino().getApellido());
-            binding.etMonto.setText(contrato.getMontoAlquiler()+"");
-            binding.etInmueble.setText("Inmueble en "+contrato.getInmueble().getDireccion()+"");
+            binding.etCodigo.setText(contrato.getId()+"");
+            binding.etFin.setText(contrato.getHasta()+"");
+            binding.etInicio.setText(contrato.getDesde()+"");
+            binding.etInquilino.setText(contrato.getArrendatario().getNombre()+ " "+contrato.getArrendatario().getApellido());
+            binding.etMonto.setText(contrato.getMensualidad()+"");
+            binding.etInmueble.setText("Inmueble en "+contrato.getBien().getDireccion()+"");
         });
 
         binding.btnPagos.setOnClickListener(v -> {

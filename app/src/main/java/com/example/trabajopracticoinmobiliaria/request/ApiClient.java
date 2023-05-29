@@ -54,6 +54,9 @@ public class ApiClient {
         @GET("inmuebles/alquiladas")
         Call<List<Inmueble>> alquiladas(@Header("Authorization") String token);
 
+        @GET("inmuebles/contrato/{id}")
+        Call<Contrato> obtenerContrato(@Header("Authorization") String token, @Path("id") int id);
+
         @PUT("inmuebles/estado/{id}")
         Call<Inmueble> cambiarEstado(@Header("Authorization") String token, @Path("id") int id);
     }
