@@ -197,66 +197,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etCorreo" />
 
-        <TextView
-            android:id="@+id/tvGarante"
-            android:layout_width="50dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="28dp"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:inputType="textPersonName"
-            android:padding="0dp"
-            android:text="Garante"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
-
-        <TextView
-            android:id="@+id/etGarante"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="36dp"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:inputType="textPersonName"
-            android:padding="6dp"
-            android:text="Name"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etTelefono" />
-
-        <TextView
-            android:id="@+id/tvTelefonoGarante"
-            android:layout_width="113dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:inputType="textPersonName"
-            android:padding="0dp"
-            android:text="Telefono Garante"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvGarante" />
-
-        <TextView
-            android:id="@+id/etTelefonoGarante"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="36dp"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:inputType="textPersonName"
-            android:padding="6dp"
-            android:text="Name"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etGarante" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,9 +42,9 @@ public class InquilinosAdapter extends RecyclerView.Adapter<InquilinosAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        Glide.with(context)
-//                .load(inmuebles.get(position).getImagen())
-//                .into(holder.imagen);
+        Glide.with(context)
+                .load(inmuebles.get(position).getFoto())
+                .into(holder.imagen);
         holder.direccion.setText(inmuebles.get(position).getDireccion());
     }
 
@@ -67,7 +67,7 @@ public class InquilinosAdapter extends RecyclerView.Adapter<InquilinosAdapter.Vi
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-//                    bundle.putSerializable("inmueble", inmuebles.get(getAdapterPosition()));
+                    bundle.putInt("inmueble", inmuebles.get(getAdapterPosition()).getId());
                     Navigation.findNavController(v).navigate(R.id.locatarioFragment, bundle);
                 }
             });
