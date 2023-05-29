@@ -39,6 +39,9 @@ public class ApiClient {
         @POST("Propietarios/Login")
         Call<String> login(@Body Usuario user);
 
+        @PUT("Propietarios/editar")
+        Call<Propietario> editar(@Header("Authorization") String token,@Body Propietario propietario);
+
         @GET("Propietarios/User")
         Call<Propietario> obtenerPerfil(@Header("Authorization") String token);
 
@@ -47,6 +50,9 @@ public class ApiClient {
 
         @GET("inmuebles/{id}")
         Call<Inmueble> obtenerInmueble(@Header("Authorization") String token, @Path("id") int id);
+
+        @GET("inmuebles/alquiladas")
+        Call<List<Inmueble>> alquiladas(@Header("Authorization") String token);
 
         @PUT("inmuebles/estado/{id}")
         Call<Inmueble> cambiarEstado(@Header("Authorization") String token, @Path("id") int id);

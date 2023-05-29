@@ -1,5 +1,7 @@
 package com.example.trabajopracticoinmobiliaria.Models;
 
+import androidx.annotation.NonNull;
+
 public class Propietario {
     private String nombre;
     private String apellido;
@@ -83,6 +85,12 @@ public class Propietario {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Propietario{" + "nombre=" + nombre + ", apellido=" + apellido + ", clave=" + clave + ", correo=" + correo + ", telefono=" + telefono + ", id=" + id + ", dni=" + dni + ", estado=" + estado + '}';
     }
 }
 

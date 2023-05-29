@@ -44,7 +44,7 @@ public class PerfilFragment extends Fragment {
             binding.btnEditar.setText(enabled ? "Guardar" : "Editar");
         });
 
-        binding.btnEditar.setOnClickListener(v ->vm.guardarPropietario(Long.parseLong(binding.etDni.getText().toString()),binding.etNombre.getText().toString(),binding.etApellido.getText().toString(),binding.etCorreo.getText().toString(),binding.etTelefono.getText().toString(),binding.etPassword.getText().toString()));
+        binding.btnEditar.setOnClickListener(v ->vm.guardarPropietario(binding.etDni.getText().toString(),binding.etNombre.getText().toString(),binding.etApellido.getText().toString(),binding.etCorreo.getText().toString(),binding.etTelefono.getText().toString(),binding.etPassword.getText().toString()));
 
         return root;
     }

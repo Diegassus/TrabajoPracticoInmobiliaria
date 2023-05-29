@@ -2,6 +2,8 @@ package com.example.trabajopracticoinmobiliaria.ui.perfil;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -64,12 +66,44 @@ public class PerfilViewModel extends AndroidViewModel {
         this.enabled.setValue(!this.enabled.getValue());
     }
 
-    public void guardarPropietario(Long dni, String nombre, String apellido, String correo, String telefono, String clave){
-//        Propietario actual = new Propietario(propietario.getValue().getId(), dni, nombre, apellido, correo, clave, telefono, propietario.getValue().getAvatar());
-//        ApiClient.getApi().actualizarPerfil(actual);
-//        propietario.setValue(actual);
+    public void guardarPropietario(String dni, String nombre, String apellido, String correo, String telefono, String clave){
         turnEnabled();
+        if(enabled.getValue().booleanValue()){
+            return;
+        }
+        SharedPreferences sp = context.getSharedPreferences("token.xml",0);
+        String token = sp.getString("token","");
+        Log.d("salida",token);
+        if(token.isEmpty()) {
+            return;
+        }
+        //String nombre, String apellido, String clave, String correo, String telefono, int id, String dni, boolean estado
+        ApiClient.IEndpointInmobiliaria end = ApiClient.getApi();
+        Propietario p = new Propietario(nombre,apellido,clave,correo,telefono,propietario.getValue().getId(),dni,true   );
+        if(p.getClave().isEmpty()){
+            p.setClave(propietario.getValue().getClave());
+        }
+        System.out.println(p.toString());
+        Call<Propietario> call = end.editar(token, p);
+        call.enqueue(new Callback<Propietario>() {
 
+            @Override
+            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                if(response.isSuccessful()){
+                    if(response.body()!= null){
+                        propietario.setValue(response.body());
+                        System.out.println(response.body().toString());
+                    }
+                }else {
+                    Log.d("salida",response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Propietario> call, Throwable t) {
+                Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show();
+            }
+        });
         // desarrollar logica para actualizar propietario
     }
 }
