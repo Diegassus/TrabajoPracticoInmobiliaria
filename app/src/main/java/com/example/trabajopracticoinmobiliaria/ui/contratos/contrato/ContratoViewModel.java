@@ -1,5 +1,6 @@
 package com.example.trabajopracticoinmobiliaria.ui.contratos.contrato;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import androidx.navigation.Navigation;
 
 import com.example.trabajopracticoinmobiliaria.Models.Contrato;
 import com.example.trabajopracticoinmobiliaria.Models.Inmueble;
+import com.example.trabajopracticoinmobiliaria.R;
 import com.example.trabajopracticoinmobiliaria.request.ApiClient;
 
 import retrofit2.Call;
@@ -59,6 +61,5 @@ public class ContratoViewModel extends AndroidViewModel {
                 Toast.makeText(context, "Error al obtener el contrato", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }}
 
-}

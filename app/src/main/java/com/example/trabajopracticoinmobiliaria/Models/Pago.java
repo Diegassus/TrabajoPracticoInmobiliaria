@@ -3,36 +3,34 @@ package com.example.trabajopracticoinmobiliaria.Models;
 import java.io.Serializable;
 
 public class Pago implements Serializable {
-    private int idPago;
-    private int numero;
+    private int id;
+    private int nro;
     private Contrato contrato;
     private double importe;
-    private String fechaDePago;
+    private String fecha;
 
-    public Pago() {}
-
-    public Pago(int idPago, int numero, Contrato contrato, double importe, String fechaDePago) {
-        this.idPago = idPago;
-        this.numero = numero;
+    public Pago(int id, int nro, Contrato contrato, double importe, String fecha) {
+        this.id = id;
+        this.nro = nro;
         this.contrato = contrato;
         this.importe = importe;
-        this.fechaDePago = fechaDePago;
+        this.fecha = fecha;
     }
 
-    public int getIdPago() {
-        return idPago;
+    public int getId() {
+        return id;
     }
 
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getNro() {
+        return nro;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNro(int nro) {
+        this.nro = nro;
     }
 
     public Contrato getContrato() {
@@ -51,11 +49,11 @@ public class Pago implements Serializable {
         this.importe = importe;
     }
 
-    public String getFechaDePago() {
-        return fechaDePago;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFechaDePago(String fechaDePago) {
-        this.fechaDePago = fechaDePago;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

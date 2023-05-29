@@ -2,7 +2,9 @@ package com.example.trabajopracticoinmobiliaria.ui.pagos;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -15,6 +17,11 @@ import com.example.trabajopracticoinmobiliaria.Models.Pago;
 import com.example.trabajopracticoinmobiliaria.request.ApiClient;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PagosViewModel extends AndroidViewModel {
     private ArrayList<Pago> listaPagos;
@@ -32,8 +39,31 @@ public class PagosViewModel extends AndroidViewModel {
     }
 
     public void obtenerPagos(Bundle bundle) {
-        Contrato contrato = (Contrato) bundle.getSerializable("contrato");
-//        listaPagos = ApiClient.getApi().obtenerPagos(contrato);
-//        pagos.setValue(listaPagos);
+        int id = bundle.getInt("contrato");
+        SharedPreferences sp = context.getSharedPreferences("token.xml", 0);
+        String token = sp.getString("token", "");
+        if(token.isEmpty()){
+            return;
+        }
+
+        ApiClient.IEndpointInmobiliaria end = ApiClient.getApi();
+        Call<List<Pago>> call = end.obtenerPagos(token, id);
+        call.enqueue(new Callback<List<Pago>>() {
+
+            @Override
+            public void onResponse(Call<List<Pago>> call, Response<List<Pago>> response) {
+                if(response.isSuccessful()){
+                    if(response.body()!=null){
+                        listaPagos = (ArrayList<Pago>) response.body();
+                        pagos.setValue(listaPagos);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Pago>> call, Throwable t) {
+                Toast.makeText(context, "Error al obtener los pagos del contrato", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

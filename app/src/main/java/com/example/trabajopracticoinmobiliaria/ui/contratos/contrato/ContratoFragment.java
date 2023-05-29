@@ -44,7 +44,7 @@ public class ContratoFragment extends Fragment {
 
         binding.btnPagos.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putSerializable("contrato", vm.getContrato().getValue());
+            bundle.putInt("contrato", vm.getContrato().getValue().getId());
             Navigation.findNavController(v).navigate(R.id.pagosFragment, bundle);
         });
 
