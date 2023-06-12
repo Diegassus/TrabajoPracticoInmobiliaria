@@ -24,7 +24,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class ApiClient {
-    private static final String PATH = "http://192.168.0.147:5200/api/";
+    private static final String PATH = "";
     private static IEndpointInmobiliaria servicio;
     public static IEndpointInmobiliaria getApi() {
         Gson gson = new GsonBuilder().setLenient().create();
